@@ -6,19 +6,19 @@
 /*   By: arcarval <arcarval@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 19:48:28 by arcarval          #+#    #+#             */
-/*   Updated: 2023/02/19 19:48:28 by arcarval         ###   ########.fr       */
+/*   Updated: 2023/02/23 14:42:38 by arcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <signal.h>
-#include <unistd.h>
+#include "Libft/libft.h"
 
-void sig_handler(int signum)
+#include <stdio.h>
+#include <signal.h>
+
+void	sig_handler(int signum)
 {
 	//Return type of the handler function should be void
-	printf("\nInside handler function\n");
+	printf("\nInside handler function: %d\n", signum);
 }
 
 int	main(int argc, char **argv)
@@ -31,14 +31,14 @@ int	main(int argc, char **argv)
 	{
 		printf("Wrong parameters quantity! Where is the string?\n");
 		printf("ARGC=%d\n", argc);
-		return(0);
+		return (0);
 	}
 	signal(SIGUSR1, sig_handler);
 	while (1)
 	{
 		printf("%d : Inside main function\n", i++);
 		kill(pid, SIGUSR1);
-		sleep(1);  // Delay for 1 second
+		sleep (1);  // Delay for 1 second
 	}
 	printf("ARGC=%d\n", argc);
 	printf("ARGV[0]:%s\n", argv[0]);

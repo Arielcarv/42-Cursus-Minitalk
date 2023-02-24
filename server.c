@@ -6,12 +6,12 @@
 /*   By: arcarval <arcarval@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 16:05:49 by arcarval          #+#    #+#             */
-/*   Updated: 2023/02/19 16:05:55 by arcarval         ###   ########.fr       */
+/*   Updated: 2023/02/23 21:05:56 by arcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "Libft/libft.h"
 #include <stdio.h>
-#include <unistd.h>
 //signal macros and kill() prototype
 #include <signal.h>
 
@@ -36,9 +36,10 @@ int	main(int argc, char **argv)
 	while (1)
 	{
 		printf("%d: LOOP. PID Process: %d\n", i++, pid);
+		printf("ARGV SIZE:%li\n", ft_strlen(argv[1]));
 		signal(SIGUSR1, handle_signal);
 		sleep(1);
 	}
 	printf("PID: %d", pid);
-	return(0);
+	return (0);
 }

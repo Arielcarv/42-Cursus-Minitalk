@@ -6,10 +6,9 @@
 #    By: arcarval <arcarval@student.42.rio>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/12 23:15:46 by arcarval          #+#    #+#              #
-#    Updated: 2023/02/23 12:54:26 by arcarval         ###   ########.fr        #
+#    Updated: 2023/02/23 21:04:57 by arcarval         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-
 
 # Colors
 BLACK	=	\033[0;30m
@@ -19,7 +18,7 @@ GREEN	=	\033[0;32m
 MAGENTA	=	\033[1;35m
 ORANGE	=	\033[1;38;5;214m
 RED		=	\033[0;31m
-RESET	=	\033[0;32;46m
+RESET	=	\033[0m
 WHITE	=	\033[0;37m
 YELLOW	=	\033[0;33m
 
@@ -54,11 +53,11 @@ AR			=	ar -rcs
 RM			=	rm -f
 
 .c.o:
-			@echo "$(ORANGE) Compiling  ➟  $(BLUE)$< $(WHITE)"
+			@echo "$(ORANGE) Compiling  ➟  $(BLUE)$< $(RESET)"
 			@$(CC) $(CFLAGS) -c $< -o $(<:.c=.o)
 
 $(NAME):	$(OBJS) $(HEADER)
-			@echo "$(MAGENTA)\n $(NAME)  🗄️  🗃️  Archived ✓"
+			@echo "$(MAGENTA)\n $(NAME)  🗄️  🗃️  Archived ✓$(RESET)"
 			@$(AR) $(NAME) $(OBJS)
 
 all:		$(NAME)
@@ -68,11 +67,11 @@ bonus:		$(NAME) $(BONUS_OBJS)
 
 clean:
 			@$(RM) $(OBJS) $(BONUS_OBJS)
-			@echo "$(CYAN) LIBFT - Bye Laziness, Bye dirt 🚿"
+			@echo "$(CYAN) LIBFT - Bye Laziness, Bye dirt 🚿$(RESET)"
 
 fclean:		clean
 			@$(RM) $(NAME) libft.so a.out
-			@echo "$(CYAN) LIBFT - Bath is so good! \n  Now it's over. 🧼✨"
+			@echo "$(CYAN) LIBFT - Bath is so good!  Now it's over. 🧼✨$(RESET)"
 
 re:			fclean all
 
