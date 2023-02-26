@@ -24,6 +24,15 @@
             ],
             "sourceFileMap": { "./": "${workspaceFolder}" },
             "cwd": "${workspaceFolder}/"
+        },
+        {
+            "name": "(lldb) Launch",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/client",
+            "MIMode": "lldb",
+            "sourceFileMap": { "./": "${workspaceFolder}" },
+            "cwd": "${workspaceFolder}/"
         }
     ]
 }
