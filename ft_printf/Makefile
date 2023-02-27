@@ -6,7 +6,7 @@
 #    By: arcarval <arcarval@student.42.rio>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/04 23:15:46 by arcarval          #+#    #+#              #
-#    Updated: 2023/02/27 19:33:55 by arcarval         ###   ########.fr        #
+#    Updated: 2023/02/27 19:36:43 by arcarval         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,48 +22,43 @@ RESET	=	\033[0m
 WHITE	=	\033[0;37m
 YELLOW	=	\033[0;33m
 
-# MINITALK
-NAME			=	minitalk.a
-LIBFT			=	./Libft/libft.a
-FT_PRINTF		= 	./ft_printf/libftprintf.a
-HEADER			=	minitalk.h
-CC				=	cc
-CFLAGS			=	-Wall -Wextra -Werror
+# FT_PRINTF
+NAME	=	libftprintf.a
+HEADER	=	ft_printf.h
+CC		=	cc
+CFLAGS	=	-Wall -Wextra -Werror
 
-SERVER			=	server
-SERVER_SRC		=	$(SERVER).c
-CLIENT			=	client
-CLIENT_SRC		=	$(CLIENT).c
-MINITALK_SRC	=	$(SERVER_SRC) $(CLIENT_SRC)
-MINITALK_OBJS	=	$(MINITALK_SRC:.c=)
+LIBFT_SRCS	=	ft_putchar_printf.c		ft_putnbr_printf.c	\
+				ft_putnbr_unsigned_fd.c	ft_strlen_printf.c	\
+				ft_putstr_printf.c
 
-AR				=	ar -rcs
-RM				=	rm -rf
+LIBFT_OBJS	=	$(addprefix Libft/, $(LIBFT_SRCS:.c=.o))
 
-% : %.c
-			@echo "$(ORANGE) Compiling  ➟  $(BLUE)$< $(WHITE)"
-			@$(CC) $(CFLAGS) -o $(<:.c=) $< $(LIBFT) $(FT_PRINTF)
+PRINTF_SRCS	=	ft_printf.c	ft_puthex_printf.c	ft_putpointer_printf.c	ft_puthex_printf.c
+PRINTF_OBJS	=	$(PRINTF_SRCS:.c=.o)
+PRINTF_OBJS	+=	$(LIBFT_OBJS)
 
-$(NAME):	printf libft $(MINITALK_OBJS)
+AR		=	ar -rcs
+RM		=	rm -rf
 
-libft: 
-			@cd ./Libft && make
+.c.o:
+			@echo "$(ORANGE) Compiling  ➟  $(BLUE)$< $(RESET)"
+			@$(CC) $(CFLAGS) -c $< -o $(<:.c=.o)
 
-printf:
-			@cd ./ft_printf && make
+$(NAME):	$(PRINTF_OBJS) $(HEADER)
+			@echo "$(MAGENTA)\n $(NAME)  🗄️  🗃️  Archived ✓$(RESET)"
+			@$(AR) $(NAME) $(PRINTF_OBJS)
 
 all:		$(NAME)
 
 clean:
-			@$(RM) $(MINITALK_OBJS) $(SERVER) $(CLIENT)
-			@echo "$(CYAN) MINITALK - Bye Laziness, Bye dirt 🚿$(RESET)"
+			@$(RM) $(PRINTF_OBJS)
+			@echo "$(CYAN) FT_PRINTF - Bye Laziness, Bye dirt 🚿$(RESET)"
 
 fclean:		clean
 			@$(RM) $(NAME)
-			@cd ./Libft && make fclean
-			@cd ./ft_printf && make fclean
-			@echo "$(CYAN) MINITALK - Bath is so good!  Now it's over. 🧼✨$(RESET)"
+			@echo "$(CYAN) FT_PRINTF - Bath is so good!  Now it's over. 🧼✨$(RESET)"
 
 re:			fclean all
 
-.PHONY:	all libft printf bonus clean fclean re
+.PHONY:	all bonus clean fclean re
