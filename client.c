@@ -6,13 +6,12 @@
 /*   By: arcarval <arcarval@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 19:48:28 by arcarval          #+#    #+#             */
-/*   Updated: 2023/02/27 19:30:31 by arcarval         ###   ########.fr       */
+/*   Updated: 2023/02/27 20:18:41 by arcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Libft/libft.h"
 #include "ft_printf/ft_printf.h"
-#include <signal.h>
 
 void	send_char(int pid, char character)
 {
@@ -42,7 +41,6 @@ int	main(int argc, char **argv)
 		return (0);
 	}
 	pid = ft_atoi(argv[1]);
-	ft_printf("PID:%d\n", pid);
 	index = 0;
 	while (argv[2][index])
 	{

@@ -6,7 +6,7 @@
 /*   By: arcarval <arcarval@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 23:46:37 by arcarval          #+#    #+#             */
-/*   Updated: 2022/12/05 20:21:18 by arcarval         ###   ########.fr       */
+/*   Updated: 2023/02/27 20:18:47 by arcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # define LIBFT_H
 # include <unistd.h>
 # include <stdlib.h>
+# include <signal.h>
 
 int		ft_isalpha(int caracter);
 int		ft_isdigit(int caracter);
