@@ -6,7 +6,7 @@
 #    By: arcarval <arcarval@student.42.rio>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/04 23:15:46 by arcarval          #+#    #+#              #
-#    Updated: 2023/02/27 19:33:55 by arcarval         ###   ########.fr        #
+#    Updated: 2023/02/28 22:03:30 by arcarval         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,12 +30,14 @@ HEADER			=	minitalk.h
 CC				=	cc
 CFLAGS			=	-Wall -Wextra -Werror
 
-SERVER			=	server
-SERVER_SRC		=	$(SERVER).c
-CLIENT			=	client
-CLIENT_SRC		=	$(CLIENT).c
-MINITALK_SRC	=	$(SERVER_SRC) $(CLIENT_SRC)
-MINITALK_OBJS	=	$(MINITALK_SRC:.c=)
+SERVER				=	server
+SERVER_SRC			=	$(SERVER).c
+CLIENT				=	client
+CLIENT_SRC			=	$(CLIENT).c
+MINITALK_SRC		=	$(SERVER_SRC) $(CLIENT_SRC)
+MINITALK_OBJS		=	$(MINITALK_SRC:.c=)
+MINITALK_SRC_BONUS	=	$(SERVER)_bonus.c $(CLIENT)_bonus.c
+MINITALK_OBJS_BONUS	=	$(MINITALK_SRC_BONUS:.c=)
 
 AR				=	ar -rcs
 RM				=	rm -rf
@@ -44,7 +46,7 @@ RM				=	rm -rf
 			@echo "$(ORANGE) Compiling  ➟  $(BLUE)$< $(WHITE)"
 			@$(CC) $(CFLAGS) -o $(<:.c=) $< $(LIBFT) $(FT_PRINTF)
 
-$(NAME):	printf libft $(MINITALK_OBJS)
+$(NAME):	printf libft minitalk
 
 libft: 
 			@cd ./Libft && make
@@ -52,10 +54,16 @@ libft:
 printf:
 			@cd ./ft_printf && make
 
+minitalk:	$(MINITALK_OBJS)
+
+bonus:		all	$(MINITALK_OBJS_BONUS)
+			@echo "$(ORANGE) MINITALK - Bonus Baby! 🎉$(RESET)"
+
 all:		$(NAME)
 
 clean:
-			@$(RM) $(MINITALK_OBJS) $(SERVER) $(CLIENT)
+			@$(RM) $(MINITALK_OBJS)
+			@$(RM) $(MINITALK_OBJS_BONUS)
 			@echo "$(CYAN) MINITALK - Bye Laziness, Bye dirt 🚿$(RESET)"
 
 fclean:		clean
