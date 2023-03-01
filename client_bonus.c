@@ -6,7 +6,7 @@
 /*   By: arcarval <arcarval@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 19:48:28 by arcarval          #+#    #+#             */
-/*   Updated: 2023/02/28 21:48:08 by arcarval         ###   ########.fr       */
+/*   Updated: 2023/03/01 18:51:56 by arcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ void	send_char(int pid, char character)
 	}
 }
 
+void	end_of_string()
+
 int	main(int argc, char **argv)
 {
 	int	pid;
@@ -48,5 +50,6 @@ int	main(int argc, char **argv)
 		index++;
 	}
 	send_char(pid, '\n');
+	signal(SIGUSR1, end_of_string)
 	return (0);
 }

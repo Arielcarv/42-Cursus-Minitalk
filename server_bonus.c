@@ -6,7 +6,7 @@
 /*   By: arcarval <arcarval@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 16:05:49 by arcarval          #+#    #+#             */
-/*   Updated: 2023/02/28 22:02:13 by arcarval         ###   ########.fr       */
+/*   Updated: 2023/03/01 18:50:08 by arcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,12 @@ int	main(int argc, char **argv)
 		ft_printf("Wait a minute! There is more than enough parameters.\n");
 		return (0);
 	}
+
+	struct	sigaction new_action;
+	new_action.sa_handler = handle_signal;
+	sigemptyset(&new_action.sa_mask);
+	new_action.sa_flags = 0;
+	sigaction(SIGUSR1, &new_action, NULL)
 	pid = getpid();
 	ft_printf("PID Process: %d\n", pid);
 	signal(SIGUSR1, handle_signal);
