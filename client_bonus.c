@@ -6,14 +6,14 @@
 /*   By: arcarval <arcarval@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 19:48:28 by arcarval          #+#    #+#             */
-/*   Updated: 2023/03/01 18:51:56 by arcarval         ###   ########.fr       */
+/*   Updated: 2023/03/02 23:15:10 by arcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Libft/libft.h"
 #include "ft_printf/ft_printf.h"
 
-void	send_char(int pid, char character)
+static void	send_char(int pid, char character)
 {
 	int	bit;
 
@@ -24,12 +24,15 @@ void	send_char(int pid, char character)
 			kill(pid, SIGUSR1);
 		else
 			kill(pid, SIGUSR2);
-		usleep(150);
+		usleep(200);
 		bit++;
 	}
 }
 
-void	end_of_string()
+static void	end_of_string_sent(int signal)
+{
+	ft_printf("\033[0;32mAll done Babe. SIG: %d!!!\033[0m\n", signal);
+}
 
 int	main(int argc, char **argv)
 {
@@ -42,6 +45,8 @@ int	main(int argc, char **argv)
 		ft_printf("It should be \"./client <PID> <Text>.\"\n");
 		return (0);
 	}
+	signal(SIGUSR1, end_of_string_sent);
+	signal(SIGUSR2, end_of_string_sent);
 	pid = ft_atoi(argv[1]);
 	index = 0;
 	while (argv[2][index])
@@ -50,6 +55,5 @@ int	main(int argc, char **argv)
 		index++;
 	}
 	send_char(pid, '\n');
-	signal(SIGUSR1, end_of_string)
 	return (0);
 }

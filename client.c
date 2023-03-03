@@ -6,14 +6,14 @@
 /*   By: arcarval <arcarval@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 19:48:28 by arcarval          #+#    #+#             */
-/*   Updated: 2023/03/01 18:59:54 by arcarval         ###   ########.fr       */
+/*   Updated: 2023/03/02 19:50:17 by arcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Libft/libft.h"
 #include "ft_printf/ft_printf.h"
 
-void	send_char(int pid, char character)
+static void	send_char(int pid, char character)
 {
 	int	bit;
 
