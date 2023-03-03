@@ -6,7 +6,7 @@
 /*   By: arcarval <arcarval@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 19:48:28 by arcarval          #+#    #+#             */
-/*   Updated: 2023/03/02 23:15:10 by arcarval         ###   ########.fr       */
+/*   Updated: 2023/03/03 16:13:44 by arcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static void	send_char(int pid, char character)
 
 static void	end_of_string_sent(int signal)
 {
-	ft_printf("\033[0;32mAll done Babe. SIG: %d!!!\033[0m\n", signal);
+	ft_printf("\n\033[0;32mAll done 😄. SIG: %d!!!\033[0m\n", signal);
 }
 
 int	main(int argc, char **argv)
