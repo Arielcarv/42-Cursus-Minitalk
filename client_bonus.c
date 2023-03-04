@@ -6,7 +6,7 @@
 /*   By: arcarval <arcarval@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 19:48:28 by arcarval          #+#    #+#             */
-/*   Updated: 2023/03/04 14:43:43 by arcarval         ###   ########.fr       */
+/*   Updated: 2023/03/04 15:37:58 by arcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void	send_char(int pid, char character)
 			kill(pid, SIGUSR1);
 		else
 			kill(pid, SIGUSR2);
-		usleep(600);
+		usleep(300);
 		bit++;
 	}
 }
@@ -55,5 +55,6 @@ int	main(int argc, char **argv)
 		index++;
 	}
 	send_char(pid, '\n');
+	send_char(pid, '\0');
 	return (0);
 }

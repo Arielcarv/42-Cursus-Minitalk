@@ -6,7 +6,7 @@
 /*   By: arcarval <arcarval@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 16:05:49 by arcarval          #+#    #+#             */
-/*   Updated: 2023/03/04 14:50:44 by arcarval         ###   ########.fr       */
+/*   Updated: 2023/03/04 15:44:22 by arcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static void	signal_action(int signal, siginfo_t *info, void *something)
 	if (bit == 8)
 	{
 		ft_putchar_fd(character, 1);
-		if (character == '\n')
+		if (character == '\0')
 			kill(info->si_pid, SIGUSR1);
 		bit = 0;
 		character = 0;
