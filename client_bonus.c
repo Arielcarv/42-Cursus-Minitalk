@@ -6,7 +6,7 @@
 /*   By: arcarval <arcarval@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 19:48:28 by arcarval          #+#    #+#             */
-/*   Updated: 2023/03/03 16:13:44 by arcarval         ###   ########.fr       */
+/*   Updated: 2023/03/04 14:43:43 by arcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void	send_char(int pid, char character)
 			kill(pid, SIGUSR1);
 		else
 			kill(pid, SIGUSR2);
-		usleep(200);
+		usleep(600);
 		bit++;
 	}
 }
@@ -41,8 +41,8 @@ int	main(int argc, char **argv)
 
 	if (argc != 3)
 	{
-		ft_printf("\033[0;31mWrong parameters quantity!\033[0m\n");
-		ft_printf("It should be \"./client <PID> <Text>.\"\n");
+		ft_printf("\033[0;31mWrong parameters quantity!\n");
+		ft_printf("It should be \"./client <PID> <Text>.\"\033[0m\n");
 		return (0);
 	}
 	signal(SIGUSR1, end_of_string_sent);

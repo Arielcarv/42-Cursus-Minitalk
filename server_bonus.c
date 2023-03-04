@@ -6,7 +6,7 @@
 /*   By: arcarval <arcarval@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 16:05:49 by arcarval          #+#    #+#             */
-/*   Updated: 2023/03/02 23:13:00 by arcarval         ###   ########.fr       */
+/*   Updated: 2023/03/04 14:50:44 by arcarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,8 @@ int	main(int argc, char **argv)
 	(void)argv;
 	if (argc != 1)
 	{
-		ft_printf("Wait a minute! There is more than enough parameters.\n");
+		ft_printf("\033[0;31mWait a minute!");
+		ft_printf("There is more than enough parameters.\033[0m\n");
 		return (0);
 	}
 	sigemptyset(&new_action.sa_mask);
@@ -51,7 +52,7 @@ int	main(int argc, char **argv)
 	sigaction(SIGUSR1, &new_action, NULL);
 	sigaction(SIGUSR2, &new_action, NULL);
 	pid = getpid();
-	ft_printf("PID Process: %d\n", pid);
+	ft_printf("\033[0;33mPID Process: %d\033[0m\n", pid);
 	while (1)
 	{
 		pause();
