@@ -6,7 +6,7 @@
 #    By: arcarval <arcarval@student.42.rio>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/04 23:15:46 by arcarval          #+#    #+#              #
-#    Updated: 2023/02/28 22:03:30 by arcarval         ###   ########.fr        #
+#    Updated: 2023/03/06 22:45:37 by arcarval         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,11 +48,11 @@ RM				=	rm -rf
 
 $(NAME):	printf libft minitalk
 
-libft: 
-			@cd ./Libft && make
+libft:
+			@make -C Libft
 
 printf:
-			@cd ./ft_printf && make
+			@make -C ft_printf
 
 minitalk:	$(MINITALK_OBJS)
 
@@ -68,8 +68,8 @@ clean:
 
 fclean:		clean
 			@$(RM) $(NAME)
-			@cd ./Libft && make fclean
-			@cd ./ft_printf && make fclean
+			@make fclean -C Libft
+			@make fclean -C ft_printf
 			@echo "$(CYAN) MINITALK - Bath is so good!  Now it's over. 🧼✨$(RESET)"
 
 re:			fclean all
